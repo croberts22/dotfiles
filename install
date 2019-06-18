@@ -34,7 +34,7 @@ echo "Done stowing! ✅"
 # Install Brewfile dependencies.
 
 echo ""
-echo "Installing remaining brews and casks...""
+echo "Installing remaining brews and casks..."
 brew bundle -v
 
 echo ""
