@@ -1,7 +1,17 @@
 #!/usr/bin/env bash
 
 set -e
-echo "Installing..."
+
+echo ""
+echo "Installing latest Ruby..."
+curl -sSL https://get.rvm.io | bash -s stable --ruby
+
+echo ""
+echo "Installing brew..."
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+echo "Done installing brew! ✅"
+
+echo "Stowing configs..."
 
 progs=$(ls -d */)
 
@@ -14,17 +24,8 @@ echo ""
 echo "Done stowing! ✅"
 
 echo ""
-echo "Installing latest Ruby..."
-curl -sSL https://get.rvm.io | bash -s stable --ruby
-
-echo ""
-echo "Installing brew..."
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-echo "Done installing brew! ✅"
-
-echo ""
-echo "Installing brews and casks...""
-brew bundle -v 
+echo "Installing remaining brews and casks...""
+brew bundle -v
 
 echo ""
 echo "Done! ✅"
