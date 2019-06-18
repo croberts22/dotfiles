@@ -2,14 +2,22 @@
 
 set -e
 
-echo ""
-echo "Installing latest Ruby..."
-curl -sSL https://get.rvm.io | bash -s stable --ruby
+# Install Brew.
 
 echo ""
 echo "Installing brew..."
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 echo "Done installing brew! ✅"
+
+# Install Ruby via RVM.
+
+echo ""
+echo "Installing latest Ruby..."
+curl -sSL https://get.rvm.io | bash -s stable --ruby
+
+# Install Stow and stow configs.
+
+brew install stow
 
 echo "Stowing configs..."
 
@@ -22,6 +30,8 @@ done
 
 echo ""
 echo "Done stowing! ✅"
+
+# Install Brewfile dependencies.
 
 echo ""
 echo "Installing remaining brews and casks...""
