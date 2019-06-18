@@ -2,6 +2,10 @@
 
 set -e
 
+echo ""
+echo "Installing xcode-select tools..."
+xcode-select --install
+
 # Install Brew.
 
 echo ""
