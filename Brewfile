@@ -1,4 +1,12 @@
 ####################
+# Taps.
+####################
+
+tap 'heroku/brew'
+tap 'blender/homebrew-tap'
+tap 'danger/tap'
+
+####################
 # Brews.
 ####################
 
