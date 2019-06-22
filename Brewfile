@@ -22,6 +22,7 @@ brew 'python'
 brew 'sqlite'
 brew 'swiftlint'
 brew 'zplug'
+brew 'node'
 
 # Code analysis.
 brew 'cloc'

@@ -48,6 +48,12 @@ chflags nohidden ~/Library
 defaults write com.apple.dock autohide -bool true
 
 ###############################################################################
+# Xcode, Development                                                          #
+###############################################################################
+
+defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
+
+###############################################################################
 # Safari & WebKit                                                             #
 ###############################################################################
 
