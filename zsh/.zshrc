@@ -10,7 +10,7 @@ export ZSH="/Users/spacepyro/.oh-my-zsh"
 ZSH_THEME=""
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -29,6 +29,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh/plugins.zsh
+source ~/.zsh/functions.zsh
 
 
 ###########################
@@ -43,13 +44,14 @@ export EDITOR='emacs'
 # Aliases
 ###########################
 
-
 alias ls="ls -lGh"
 alias du="du -skh"
+alias np="spotify status"
 
 alias fastlane="bundle exec fastlane"
 
 alias tenebrae="ssh tenebrae"
+alias fl="fastlane"
 
 alias restart="sudo shutdown -r now"
 alias shutdown="sudo shutdown -h 60"

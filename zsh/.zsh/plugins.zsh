@@ -11,6 +11,7 @@ zplug "plugins/osx", from:oh-my-zsh
 zplug "plugins/xcode", from:oh-my-zsh
 
 # Theme, appearance, and editing.
+zplug "mafredri/zsh-async", from:github
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
 # Shell/editing behaviors.
