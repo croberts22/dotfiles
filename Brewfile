@@ -5,6 +5,7 @@
 tap 'heroku/brew'
 tap 'blender/homebrew-tap'
 tap 'danger/tap'
+tap 'vapor/tap'
 
 ####################
 # Brews.
@@ -23,6 +24,7 @@ brew 'sqlite'
 brew 'swiftlint'
 brew 'zplug'
 brew 'node'
+brew 'vapor'
 
 # Code analysis.
 brew 'cloc'
