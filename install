@@ -2,10 +2,13 @@
 
 set -e
 
+################################################
 # Install Brew.
+################################################
 
 echo ""
 echo "Installing brew..."
+
 which -s brew
 if [[ $? != 0 ]] ; then
     # Install Homebrew
@@ -13,15 +16,20 @@ if [[ $? != 0 ]] ; then
 else
     brew update
 fi
+
 echo "Done installing brew! ✅"
 
+################################################
 # Install Ruby via RVM.
+################################################
 
 echo ""
 echo "Installing latest Ruby..."
 curl -sSL https://get.rvm.io | bash -s stable --ruby
 
+################################################
 # Install Stow and stow configs.
+################################################
 
 brew install stow
 
@@ -37,13 +45,50 @@ done
 echo ""
 echo "Done stowing! ✅"
 
+################################################
+# Install Mac App Store apps.
+################################################
+
+echo ""
+echo "Installing Mac App Store apps..."
+
 # Install Brewfile dependencies.
+# First, install `mas` so we can install Xcode, then brew the bundle.
+brew install mas
+
+# Xcode
+mas install 497799835
+
+# Omnigraffle
+mas install 1142578753
+
+# Spark
+mas install 1176895641
+
+# Things 3
+mas install 904280696
+
+# iA Writer
+mas install 775737590
+
+# Slack
+mas install 803453959
+
+# DaisyDisk
+mas install 411643860
+
+echo ""
+echo "Done installing Mac App Store apps! ✅"
+
+################################################
+# Brew the bundle.
+################################################
 
 echo ""
 echo "Installing remaining brews and casks..."
 brew bundle -v
 
 echo ""
-echo "Done! ✅"
+echo "Done brewin'! ✅"
 
 exit 0

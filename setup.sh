@@ -18,6 +18,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Check for software updates daily, not just once per week
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
+# Set language and text formats
+defaults write NSGlobalDomain AppleLanguages -array "en" "kr"
+
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
@@ -40,18 +43,73 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 # This is helpful for getting at Xcode's Derived Data folder
 chflags nohidden ~/Library
 
+# Disable icons for hard drives and servers on desktop
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+
+# Display removable media on the desktop
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+
+# Finder: show hidden files by default
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# Use list view in all Finder windows by default
+# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Show the ~/Library folder
+chflags nohidden ~/Library
+
 ###############################################################################
-# Dock, Dashboard, and hot corners                                            #
+# Dock, Dashboard                                                             #
 ###############################################################################
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
+
+# Don’t show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
+
+# Wipe all (default) app icons from the Dock
+# This is only really useful when setting up a new Mac, or if you don’t use
+# the Dock to launch apps.
+defaults write com.apple.dock persistent-apps -array
+
+###############################################################################
+# Status Bar                                                                  #
+###############################################################################
+
+# Disable Notification Center and remove the menu bar icon
+launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+
+# Show language menu in the top right corner of the boot screen
+sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
+
+###############################################################################
+# Messages                                                                    #
+###############################################################################
+
+# Disable automatic emoji substitution (i.e. use plain text smileys)
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
 
 ###############################################################################
 # Xcode, Development                                                          #
 ###############################################################################
 
 defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
+
+# Disable automatic capitalization as it’s annoying when typing code
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
+# Disable smart dashes as they’re annoying when typing code
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# Disable automatic period substitution as it’s annoying when typing code
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+# Disable smart quotes as they’re annoying when typing code
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 ###############################################################################
 # Safari & WebKit                                                             #
@@ -72,8 +130,19 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
 ###############################################################################
+# Apps                                             #
+###############################################################################
+
+# Automatically quit printer app once the print jobs complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
+
+echo "Done. Note that some of these changes require a logout/restart to take effect. Press enter to restart impacted apps:"
+
+read input
 
 for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" \
     "Dock" "Finder" "Google Chrome" "Firefox" "Mail" "Messages" \
@@ -81,4 +150,3 @@ for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" \
   killall "${app}" &> /dev/null
 done
 
-echo "Done. Note that some of these changes require a logout/restart to take effect."
