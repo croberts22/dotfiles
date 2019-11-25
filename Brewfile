@@ -25,6 +25,7 @@ brew 'swiftlint'
 brew 'zplug'
 brew 'node'
 brew 'vapor'
+brew 'gpg'
 
 # Code analysis.
 brew 'cloc'
@@ -60,6 +61,7 @@ cask 'atom'
 cask 'postman'
 cask 'charles'
 cask 'docker'
+cask 'paw'
 
 # Design.
 cask 'sketch'

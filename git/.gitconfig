@@ -1,6 +1,6 @@
 [user]
 	name = Corey Roberts
-	email = spacepyro@gmail.com
+	email = spacepyro@protonmail.com
 [mergetool]
 	keepBackup = false
 	prompt = false
@@ -26,3 +26,7 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[gpg]
+	program = /usr/local/bin/gpg
+[commit]
+	gpgsign = false
