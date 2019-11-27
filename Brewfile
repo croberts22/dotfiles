@@ -49,6 +49,7 @@ cask 'alfred'
 cask 'bartender'
 cask 'istat-menus'
 cask 'spectacle'
+cask 'hazel'
 
 # Development.
 cask 'android-studio'
