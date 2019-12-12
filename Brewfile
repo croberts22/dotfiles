@@ -26,6 +26,7 @@ brew 'zplug'
 brew 'node'
 brew 'vapor'
 brew 'gpg'
+brew 'certbot'
 
 # Code analysis.
 brew 'cloc'
@@ -43,13 +44,14 @@ cask 'firefox'
 cask 'private-internet-access'
 cask 'rocket'
 cask 'dropbox'
+cask 'hazel'
 
 # "Pro" Tools.
 cask 'alfred'
 cask 'bartender'
 cask 'istat-menus'
 cask 'spectacle'
-cask 'hazel'
+cask 'micro-snitch'
 
 # Development.
 cask 'android-studio'
