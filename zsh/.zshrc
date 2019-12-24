@@ -33,6 +33,7 @@ export EDITOR='emacs'
 # Aliases
 ###########################
 
+alias mv="mv -v"
 alias ls="ls -lGh"
 alias du="du -skh"
 alias np="spotify status"
