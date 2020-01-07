@@ -1,6 +1,7 @@
 source ~/.zplug/init.zsh
 
 # Common functions and shell utilities.
+zplug "zsh-users/zsh-history-substring-search"
 zplug "plugins/common-aliases", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
 zplug "plugins/z", from:oh-my-zsh
