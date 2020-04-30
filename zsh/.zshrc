@@ -1,6 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
 
@@ -21,6 +18,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh/plugins.zsh
 source ~/.zsh/functions.zsh
+source ~/.bash_profile
 
 ###########################
 # User configuration
@@ -29,13 +27,19 @@ source ~/.zsh/functions.zsh
 # Yes, I'm one of those.
 export EDITOR='emacs'
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
 ###########################
 # Aliases
 ###########################
 
+alias x="xed ."
 alias mv="mv -v"
 alias ls="ls -lGh"
 alias du="du -skh"
+alias zshrc="emacs ~/.zshrc && source ~/.zshrc"
+
 alias np="spotify status"
 
 alias fl="bundle exec fastlane"
