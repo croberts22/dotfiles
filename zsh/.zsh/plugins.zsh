@@ -8,12 +8,13 @@ zplug "plugins/z", from:oh-my-zsh
 
 # Command/program/environment-specific.
 zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/osx", from:oh-my-zsh
-zplug "plugins/xcode", from:oh-my-zsh
+#zplug "plugins/osx", from:oh-my-zsh
+#zplug "plugins/xcode", from:oh-my-zsh
 
 # Theme, appearance, and editing.
 zplug "mafredri/zsh-async", from:github
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+#zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 
 # Shell/editing behaviors.
 zplug "zsh-users/zsh-autosuggestions"

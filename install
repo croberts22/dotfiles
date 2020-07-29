@@ -9,13 +9,13 @@ set -e
 echo ""
 echo "Installing brew..."
 
-which -s brew
-if [[ $? != 0 ]] ; then
+#which -s brew
+#if [[ $? != 0 ]] ; then
     # Install Homebrew
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-else
-    brew update
-fi
+#    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+#else
+#    brew update
+#fi
 
 echo "Done installing brew! ✅"
 
@@ -31,7 +31,7 @@ curl -sSL https://get.rvm.io | bash -s stable --ruby
 # Install Stow and stow configs.
 ################################################
 
-brew install stow
+#brew install stow
 
 echo "Stowing configs..."
 
