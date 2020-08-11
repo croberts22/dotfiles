@@ -1,3 +1,12 @@
+switch_xcode() {
+    sudo xcode-select -s /Applications/$1.app/Contents/Developer; export DEVELOPER_DIR=$(sudo xcode-select --print-path)
+}
+
+clear_all_derived_data() {
+    rm -rf ~/Library/Caches/org.carthage.CarthageKit
+    rm -rf ~/Library/Developer/Xcode/DerivedData
+}
+
 copr() {
     git checkout develop
     git pull
