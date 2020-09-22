@@ -27,6 +27,9 @@ source ~/.bash_profile
 # Yes, I'm one of those.
 export EDITOR='emacs'
 
+# For use with Java and javacc
+export JAVA_HOME="~/Library/Java/JavaVirtualMachines/openjdk-14.0.2/Contents/Home"
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
@@ -42,10 +45,16 @@ alias zshrc="emacs ~/.zshrc && source ~/.zshrc"
 
 alias np="spotify status"
 
+# iOS
+
 alias fl="bundle exec fastlane"
+alias remove_tester="bundle exec fastlane pilot remove"
+
+# Media Server
 
 alias tenebrae="ssh tenebrae"
 alias t="tenebrae"
+
 
 alias restart="sudo shutdown -r now"
 alias shutdown="sudo shutdown -h 60"

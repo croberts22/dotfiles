@@ -15,19 +15,22 @@ switch_xcode() {
 }
 
 clear_all_derived_data() {
+    echo "Requesting a cleanup of compiled code...🧹"
+    echo "Clearing org.carthage.CarthageKit..."
     rm -rf ~/Library/Caches/org.carthage.CarthageKit
+    echo "Clearing DerivedData..."
     rm -rf ~/Library/Developer/Xcode/DerivedData
+    echo "Done! 💫"
 }
 
-copr() {
-    git checkout develop
-    git pull
-    git fetch origin +refs/pull/$1/merge:
-    git checkout -qf FETCH_HEAD
+upload_hv() {
+    echo "Uploading \"${1}\" to tenebrae..."
+    scp $1 spacepyro@tenebrae:transfer/hv
 }
 
-upload_music_to_tenebrae() {
-  scp -r $1 spacepyro@tenebrae:music/
+upload_music() {
+    echo "Uploading \"${1}\" to tenebrae..."
+    scp -r $1 spacepyro@tenebrae:transfer/music
 }
 
 test_and_upload() {
