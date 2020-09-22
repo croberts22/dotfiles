@@ -1,3 +1,15 @@
+set_xcode_parallelization() {
+    echo "Setting parallelization of Xcode tasks to ${1} task."
+    defaults write com.apple.dt.xcodebuild PBXNumberOfParallelBuildSubtasks $1
+    defaults write com.apple.dt.xcodebuild IDEBuildOperationMaxNumberOfConcurrentCompileTasks $1
+    defaults write com.apple.dt.Xcode PBXNumberOfParallelBuildSubtasks $1
+    defaults write com.apple.dt.Xcode IDEBuildOperationMaxNumberOfConcurrentCompileTasks $1
+}
+
+auto_set_xcode_parallelization() {
+    set_xcode_parallelization `sysctl -n hw.ncpu`
+}
+
 switch_xcode() {
     sudo xcode-select -s /Applications/$1.app/Contents/Developer; export DEVELOPER_DIR=$(sudo xcode-select --print-path)
 }
