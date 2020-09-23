@@ -30,6 +30,9 @@ export EDITOR='emacs'
 # For use with Java and javacc
 export JAVA_HOME="~/Library/Java/JavaVirtualMachines/openjdk-14.0.2/Contents/Home"
 
+# psql support for macOS (Postgres 12)
+export PATH="$PATH:/Library/PostgreSQL/12/bin"
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 

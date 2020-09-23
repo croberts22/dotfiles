@@ -27,6 +27,7 @@ brew 'node'
 brew 'vapor'
 brew 'gpg'
 brew 'certbot'
+brew 'gh'
 
 # Code analysis.
 brew 'cloc'
