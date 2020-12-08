@@ -1,3 +1,15 @@
+sf() {
+    ./Pods/SwiftFormat/CommandLineTool/swiftformat $1
+}
+
+sl() {
+    ./Pods/SwiftLint/swiftlint
+}
+
+pi() {
+    pod install
+}
+
 set_xcode_parallelization() {
     echo "Setting parallelization of Xcode tasks to ${1} task."
     defaults write com.apple.dt.xcodebuild PBXNumberOfParallelBuildSubtasks $1
