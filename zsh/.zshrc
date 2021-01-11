@@ -21,6 +21,15 @@ source ~/.zsh/functions.zsh
 source ~/.bash_profile
 
 ###########################
+# x86 vs. ARM
+###########################
+
+_ARCH=$(arch)
+if [[ "$_ARCH" == "i386" ]]; then
+  echo -ne "\033]1337;SetColors=bg=002020\007"
+fi
+
+###########################
 # User configuration
 ###########################
 
@@ -28,7 +37,7 @@ source ~/.bash_profile
 export EDITOR='emacs'
 
 # For use with Java and javacc
-export JAVA_HOME="~/Library/Java/JavaVirtualMachines/openjdk-14.0.2/Contents/Home"
+export JAVA_HOME=`/usr/libexec/java_home -v "1.8.0_261"`
 
 # psql support for macOS (Postgres 12)
 export PATH="$PATH:/Library/PostgreSQL/12/bin"

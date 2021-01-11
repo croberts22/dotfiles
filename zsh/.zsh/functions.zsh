@@ -10,6 +10,18 @@ pi() {
     pod install
 }
 
+extract_mp4_from_mkv() {
+  arg=$1
+  filename=${arg%.mkv}
+  ffmpeg -i $filename.mkv -codec copy $filename.mp4
+}
+
+resize_video() {
+  arg=$1
+  filename=${arg%.mp4}
+  ffmpeg -i $filename.mp4 -vf scale=1280:960 -preset slow -crf 18 $filename-resized-1920x960.mp4
+}
+
 set_xcode_parallelization() {
     echo "Setting parallelization of Xcode tasks to ${1} task."
     defaults write com.apple.dt.xcodebuild PBXNumberOfParallelBuildSubtasks $1
@@ -26,6 +38,12 @@ switch_xcode() {
     sudo xcode-select -s /Applications/$1.app/Contents/Developer; export DEVELOPER_DIR=$(sudo xcode-select --print-path)
 }
 
+update_fastlane() {
+  bundle update fastlane
+  git add Gemfile.lock
+  git commit -m "Updating fastlane."
+}
+
 clear_all_derived_data() {
     echo "Requesting a cleanup of compiled code...🧹"
     echo "Clearing org.carthage.CarthageKit..."
@@ -38,6 +56,15 @@ clear_all_derived_data() {
 upload_hv() {
     echo "Uploading \"${1}\" to tenebrae..."
     scp $1 spacepyro@tenebrae:transfer/hv
+    mkdir -p "Uploaded"
+    mv $1 Uploaded
+}
+
+upload_lhv() {
+    echo "Uploading \"${1}\" to tenebrae..."
+    scp $1 spacepyro@tenebrae:transfer/lhv
+    mkdir -p "Uploaded"
+    mv $1 Uploaded
 }
 
 upload_music() {
