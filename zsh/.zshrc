@@ -66,6 +66,9 @@ alias du="du -skh"
 alias zshrc="emacs ~/.zshrc && source ~/.zshrc"
 
 alias np="spotify status"
+alias linguist="github-linguist"
+
+alias qx="xcrun simctl spawn booted log config --mode 'level:off' --subsystem com.apple.CoreTelephony"
 
 # iOS
 
