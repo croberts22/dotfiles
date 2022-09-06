@@ -55,9 +55,17 @@ export PATH="$PATH:/Library/PostgreSQL/12/bin"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+export ORA_CLIENT_HOME=$HOME/instantclient_19_3
+export PATH=$ORA_CLIENT_HOME:$PATH
+export TNS_ADMIN=$ORA_CLIENT_HOME/network/admin
+export SQLPATH=$ORA_CLIENT_HOME/sqlplus
+export ORACLE_PATH=$SQLPATH
+
 ###########################
 # Aliases
 ###########################
+
+alias sqlplus='rlwrap sqlplus'
 
 alias x="xed ."
 alias mv="mv -v"
