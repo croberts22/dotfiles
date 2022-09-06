@@ -1,5 +1,11 @@
+if [[ "$ZPROF" = true ]]; then
+  zmodload zsh/zprof
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -12,13 +18,14 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
+    zsh-nvm
+    git
 )
 
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh/plugins.zsh
 source ~/.zsh/functions.zsh
-source ~/.bash_profile
+#source ~/.bash_profile
 
 ###########################
 # x86 vs. ARM
@@ -38,6 +45,9 @@ export EDITOR='emacs'
 
 # For use with Java and javacc
 export JAVA_HOME=`/usr/libexec/java_home -v "1.8.0_261"`
+
+# For standard Java.
+#export JAVA_HOME=`/usr/libexec/java_home -v "14.0.2"`
 
 # psql support for macOS (Postgres 12)
 export PATH="$PATH:/Library/PostgreSQL/12/bin"
@@ -66,10 +76,19 @@ alias remove_tester="bundle exec fastlane pilot remove"
 
 alias tenebrae="ssh tenebrae"
 alias t="tenebrae"
-
+alias shinra="ssh shinra"
 
 alias restart="sudo shutdown -r now"
 alias shutdown="sudo shutdown -h 60"
 alias sleep="sudo shutdown -s"
 
 alias omz=". ~/.zshrc"
+
+
+
+if [[ "$ZPROF" = true ]]; then
+  zprof
+fi
+
+# opam configuration
+[[ ! -r /Users/spacepyro/.opam/opam-init/init.zsh ]] || source /Users/spacepyro/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null

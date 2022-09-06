@@ -1,7 +1,6 @@
 [user]
 	name = Corey Roberts
-	email = spacepyro@gmail.com
-	signingkey = 9086213EFF8F9A3BB6E319978960EC516C1572A4
+	email = spacepyro@protonmail.com
 [mergetool]
 	keepBackup = false
 	prompt = false
@@ -31,3 +30,5 @@
 	program = /usr/local/bin/gpg
 [commit]
 	gpgsign = false
+[pull]
+	rebase = false

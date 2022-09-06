@@ -10,6 +10,7 @@ zplug "plugins/z", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/osx", from:oh-my-zsh
 zplug "plugins/xcode", from:oh-my-zsh
+zplug "lukechilds/zsh-nvm"
 
 # Theme, appearance, and editing.
 zplug "mafredri/zsh-async", from:github

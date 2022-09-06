@@ -1,3 +1,8 @@
+profile_zsh() {
+  shell=${1-$SHELL}
+  ZPROF=true $shell -i -c exit
+}
+
 sf() {
     ./Pods/SwiftFormat/CommandLineTool/swiftformat $1
 }
@@ -19,7 +24,15 @@ extract_mp4_from_mkv() {
 resize_video() {
   arg=$1
   filename=${arg%.mp4}
-  ffmpeg -i $filename.mp4 -vf scale=1280:960 -preset slow -crf 18 $filename-resized-1920x960.mp4
+  ffmpeg -i $filename.mp4 -aspect 1280:960 -c copy $filename-resized-1920x960.mp4
+}
+
+delay_video() {
+  arg=$1
+  time_arg=$2
+  filename=${arg%.mp4}
+  delay=$2
+  ffmpeg -i $filename.mp4 -itsoffset $2 -i $filename.mp4 -map 0:v -map 1:a -c copy $filename-delayed-$2.mp4
 }
 
 set_xcode_parallelization() {
@@ -32,6 +45,13 @@ set_xcode_parallelization() {
 
 auto_set_xcode_parallelization() {
     set_xcode_parallelization `sysctl -n hw.ncpu`
+}
+
+clear_xcode_parallelization() {
+    defaults delete com.apple.dt.xcodebuild PBXNumberOfParallelBuildSubtasks
+    defaults delete com.apple.dt.xcodebuild IDEBuildOperationMaxNumberOfConcurrentCompileTasks
+    defaults delete com.apple.dt.Xcode PBXNumberOfParallelBuildSubtasks
+    defaults delete com.apple.dt.Xcode IDEBuildOperationMaxNumberOfConcurrentCompileTasks
 }
 
 switch_xcode() {
@@ -53,23 +73,24 @@ clear_all_derived_data() {
     echo "Done! 💫"
 }
 
-upload_hv() {
-    echo "Uploading \"${1}\" to tenebrae..."
-    scp $1 spacepyro@tenebrae:transfer/hv
-    mkdir -p "Uploaded"
-    mv $1 Uploaded
+fix_swiftui_sims() {
+    echo "Fixing SwiftUI previews from making your computer outrageously hot when idle..."
+    cd ~/Library/Developer/Xcode/UserData/Previews/Simulator\ Devices/
+    find . -name com.apple.suggestions.plist -exec plutil -replace SuggestionsAppLibraryEnabled -bool NO {} ";"
+    cd -
+
+    echo "Fixing Simulators from also making your computer outrageously hot when idle..."
+    cd ~/Library/Developer/CoreSimulator/Devices
+    find . -name com.apple.suggestions.plist -exec plutil -replace SuggestionsAppLibraryEnabled -bool NO {} ";"
+    cd -
+
+    echo "Done! ❄️"
 }
 
-upload_lhv() {
-    echo "Uploading \"${1}\" to tenebrae..."
-    scp $1 spacepyro@tenebrae:transfer/lhv
-    mkdir -p "Uploaded"
-    mv $1 Uploaded
-}
-
-upload_music() {
-    echo "Uploading \"${1}\" to tenebrae..."
-    scp -r $1 spacepyro@tenebrae:transfer/music
+reset_swiftui_previews() {
+    echo "Resetting simulators for SwiftUI previews... 📱"
+    xcrun simctl --set previews delete all
+    echo "Simulators are reset. ✅"
 }
 
 test_and_upload() {
