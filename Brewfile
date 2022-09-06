@@ -28,6 +28,7 @@ brew 'vapor'
 brew 'gpg'
 brew 'certbot'
 brew 'gh'
+brew 'bazel'
 
 # Code analysis.
 brew 'cloc'
@@ -69,11 +70,8 @@ cask 'paw'
 # Design.
 cask 'sketch'
 cask 'zeplin'
+cask 'figma'
 
 # Chill.
 cask 'spotify'
-cask 'vlc'
-cask 'steam'
-cask 'plex-media-player'
 cask 'discord'
-cask 'deluge'
