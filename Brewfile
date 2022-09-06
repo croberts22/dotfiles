@@ -42,7 +42,6 @@ brew 'htop'
 
 # Utilities.
 cask 'firefox'
-cask 'private-internet-access'
 cask 'rocket'
 cask 'dropbox'
 cask 'hazel'
