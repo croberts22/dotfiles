@@ -5,7 +5,6 @@
 tap 'heroku/brew'
 tap 'blender/homebrew-tap'
 tap 'danger/tap'
-tap 'vapor/tap'
 
 ####################
 # Brews.
@@ -24,7 +23,6 @@ brew 'sqlite'
 brew 'swiftlint'
 brew 'zplug'
 brew 'node'
-brew 'vapor'
 brew 'gpg'
 brew 'certbot'
 brew 'gh'
@@ -43,7 +41,6 @@ brew 'htop'
 # Utilities.
 cask 'firefox'
 cask 'rocket'
-cask 'dropbox'
 cask 'hazel'
 
 # "Pro" Tools.
@@ -60,15 +57,14 @@ cask 'iterm2'
 cask 'qlcolorcode'
 cask 'webpquicklook'
 cask 'imageoptim'
-cask 'atom'
+cask 'sublime-text'
 cask 'postman'
 cask 'charles'
 cask 'docker'
 cask 'paw'
 
 # Design.
-cask 'sketch'
-cask 'zeplin'
+cask 'figma'
 
 # Chill.
 cask 'spotify'
