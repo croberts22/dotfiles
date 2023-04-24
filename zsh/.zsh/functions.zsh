@@ -3,14 +3,6 @@ profile_zsh() {
   ZPROF=true $shell -i -c exit
 }
 
-sf() {
-    ./Pods/SwiftFormat/CommandLineTool/swiftformat $1
-}
-
-sl() {
-    ./Pods/SwiftLint/swiftlint
-}
-
 pi() {
     pod install
 }
@@ -19,6 +11,18 @@ extract_mp4_from_mkv() {
   arg=$1
   filename=${arg%.mkv}
   ffmpeg -i $filename.mkv -codec copy $filename.mp4
+}
+
+convert_avi_to_mkv() {
+  arg=$1
+  filename=${arg%.avi}
+  ffmpeg -fflags +genpts -i $arg -c:v copy -c:a copy $filename.mkv
+}
+
+convert_264_to_mp4() {
+  arg=$1
+  filename=${arg%.264}
+  ffmpeg -framerate 24 -i $arg -c copy $filename.mp4
 }
 
 resize_video() {
@@ -91,14 +95,4 @@ reset_swiftui_previews() {
     echo "Resetting simulators for SwiftUI previews... 📱"
     xcrun simctl --set previews delete all
     echo "Simulators are reset. ✅"
-}
-
-test_and_upload() {
-  rm -rf build/Logs/Test
-  xcodebuild -workspace $1 -scheme $2 -derivedDataPath build -destination 'platform=iOS Simulator,OS=13.4.1,name=iPhone 11' -enableCodeCoverage YES clean build test | xcpretty
-  find build/Logs/Test -name "*.xcresult" | xargs -I % sh -c 'xcrun xccov view --report --json % > %.json'
-  find build/Logs/Test -name "*xcresult*" -exec scp -r {} test_results ';'
-  find test_results -maxdepth 1 -name "*.json" | sort -n | xargs -I % sh -c 'curl -v -H "Content-Type:multipart/form-data" -F "file=@%;type=application/json" localhost:3000/coverage_reports/'
-  find test_results -maxdepth 1 -name "*.json" -exec mv {} test_results/archive ';'
-  find test_results -maxdepth 1 -name "*.xcresult" -exec mv {} test_results/xcresult ';'
 }

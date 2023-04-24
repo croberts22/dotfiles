@@ -55,6 +55,9 @@ export PATH="$PATH:/Library/PostgreSQL/12/bin"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+# Add Sublime to CLI
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+
 ###########################
 # Aliases
 ###########################
@@ -92,3 +95,4 @@ fi
 
 # opam configuration
 [[ ! -r /Users/spacepyro/.opam/opam-init/init.zsh ]] || source /Users/spacepyro/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+PATH=$(pyenv root)/shims:$PATH
